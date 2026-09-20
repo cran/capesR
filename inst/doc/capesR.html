@@ -48,8 +48,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +61,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -360,20 +361,26 @@ objectives.</li>
 <p>This package automates the process of obtaining and organizing this
 data, making it easily accessible for analysis and reporting.</p>
 <p>The original CAPES data is available at <a href="https://dadosabertos.capes.gov.br/group/catalogo-de-teses-e-dissertacoes-brasil">dadosabertos.capes.gov.br</a>.</p>
-<p>The data used in this package is hosted in the <a href="https://osf.io/4a5b7/">The Open Science Framework (OSF)</a>.</p>
+<p>The yearly Parquet files used by this package are hosted on <a href="https://huggingface.co/datasets/mlkwy/capesR">Hugging Face</a>.
+The file index, with URLs and checksums, is shipped in the package as
+<code>capes_years</code>.</p>
 </div>
 <div id="installation" class="section level1">
 <h1>Installation</h1>
 <p>To install the package, use:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;hugoavmedeiros/capesR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;capesR&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># or the development version:</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;milkway/capesR&quot;</span>)</span></code></pre></div>
 </div>
 <div id="functions" class="section level1">
 <h1>Functions</h1>
 <div id="download-data" class="section level2">
 <h2>Download Data</h2>
-<p>The <code>download_capes_data</code> function allows you to download
-CAPES data files hosted on OSF. You can specify the desired years, and
-the corresponding files will be saved locally.</p>
+<p>The <code>download_capes_data</code> function downloads the yearly
+CAPES data files. You can specify the desired years, and the
+corresponding files will be saved locally. To use a mirror, set
+<code>options(capesR.base_url = &quot;https://my.mirror/path&quot;)</code> or pass
+<code>base_url =</code> directly.</p>
 <div id="example-1" class="section level3">
 <h3>Example 1</h3>
 <p>Download data using the temporary directory (function default):</p>
@@ -522,7 +529,7 @@ charts:</p>
 <p>This tutorial presented the basic steps to use the
 <strong>capesR</strong> package. For more information about the
 available functions, consult the documentation with:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>?years_osf</span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>?capes_years</span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>?capes_synthetic_df</span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>?download_capes_data</span>
 <span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>?search_capes_text</span>
