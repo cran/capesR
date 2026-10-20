@@ -1,12 +1,15 @@
 Type: Package
 Package: capesR
 Title: Access to CAPES Data
-Version: 0.2.0
-Date: 2026-09-18
+Version: 0.2.1
+Date: 2026-09-19
 Authors@R: c(
-            person("André", "Leite", email = "leite@castlab.org", role = c("aut", "cre")),
-            person("Hugo", "Vasconcelos Medeiros", email = "hugoavmedeiros@gmail.com", role = "aut"),
-            person("Dalson", "Figueiredo Filho", email = "dalson.figueiredofo@ufpe.br", role = "aut")
+            person("André", "Leite", email = "leite@castlab.org", role = c("aut", "cre"),
+                   comment = c(ORCID = "0000-0002-4718-9766")),
+            person("Hugo", "Vasconcelos Medeiros", email = "hugoavmedeiros@gmail.com", role = "aut",
+                   comment = c(ORCID = "0000-0001-6249-0920")),
+            person("Dalson", "Figueiredo Filho", email = "dalson.figueiredofo@ufpe.br", role = "aut",
+                   comment = c(ORCID = "0000-0001-6982-2262"))
             )
 Description: Provides simplified access to the data from the Catalog of Theses and Dissertations 
     of the Brazilian Coordination for the Improvement of Higher Education Personnel (CAPES, <https://catalogodeteses.capes.gov.br>) 
@@ -19,18 +22,21 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.0.0)
 Imports: arrow, dplyr, magrittr, rlang, stringr, utils
-Suggests: knitr, rmarkdown
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 VignetteBuilder: knitr
-URL: https://github.com/milkway/capesR,
-        https://milkway.github.io/capesR/
-BugReports: https://github.com/milkway/capesR/issues
+URL: https://github.com/StrategicProjects/capesR,
+        https://strategicprojects.github.io/capesR/
+BugReports: https://github.com/StrategicProjects/capesR/issues
 Config/Needs/website: tidyverse/tidytemplate
 Config/roxygen2/version: 8.0.0
+Config/testthat/edition: 3
 NeedsCompilation: no
-Packaged: 2026-09-18 22:56:00 UTC; leite
-Author: André Leite [aut, cre],
-  Hugo Vasconcelos Medeiros [aut],
-  Dalson Figueiredo Filho [aut]
+Packaged: 2026-10-20 10:39:08 UTC; leite
+Author: André Leite [aut, cre] (ORCID: <https://orcid.org/0000-0002-4718-9766>),
+  Hugo Vasconcelos Medeiros [aut] (ORCID:
+    <https://orcid.org/0000-0001-6249-0920>),
+  Dalson Figueiredo Filho [aut] (ORCID:
+    <https://orcid.org/0000-0001-6982-2262>)
 Maintainer: André Leite <leite@castlab.org>
 Repository: CRAN
-Date/Publication: 2026-09-20 18:30:37 UTC
+Date/Publication: 2026-10-20 10:50:02 UTC

@@ -370,7 +370,7 @@ The file index, with URLs and checksums, is shipped in the package as
 <p>To install the package, use:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;capesR&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># or the development version:</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;milkway/capesR&quot;</span>)</span></code></pre></div>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;StrategicProjects/capesR&quot;</span>)</span></code></pre></div>
 </div>
 <div id="functions" class="section level1">
 <h1>Functions</h1>
@@ -463,15 +463,33 @@ search.</p>
 <div id="search-text" class="section level2">
 <h2>Search Text</h2>
 <p>To search for text in already combined data, you can use the
-<code>search_capes_text</code> function, specifying the term and the
-text field (e.g., title, abstract, author, or advisor).</p>
+<code>search_capes_text</code> function, specifying the term(s) and the
+text field(s) (e.g., <code>titulo</code>, <code>resumo</code>,
+<code>autoria</code>, <code>orientacao</code>). Matching is literal and
+case-insensitive.</p>
 <div id="example" class="section level3">
 <h3>Example:</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">search_capes_text</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="at">data =</span> combined_data,</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">term =</span> <span class="st">&quot;education&quot;</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="at">field =</span> <span class="st">&quot;title&quot;</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Titles mentioning &quot;Educação&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">search_capes_text</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">data =</span> combined_data,</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="at">term =</span> <span class="st">&quot;Educação&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="at">field =</span> <span class="st">&quot;titulo&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co"># Titles or abstracts mentioning either synonym</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">search_capes_text</span>(</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  <span class="at">data =</span> combined_data,</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  <span class="at">term =</span> <span class="fu">c</span>(<span class="st">&quot;varicela&quot;</span>, <span class="st">&quot;catapora&quot;</span>),</span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  <span class="at">field =</span> <span class="fu">c</span>(<span class="st">&quot;titulo&quot;</span>, <span class="st">&quot;resumo&quot;</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>)</span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co"># Abstracts mentioning both terms</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">search_capes_text</span>(</span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>  <span class="at">data =</span> combined_data,</span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>  <span class="at">term =</span> <span class="fu">c</span>(<span class="st">&quot;saúde&quot;</span>, <span class="st">&quot;escola&quot;</span>),</span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>  <span class="at">field =</span> <span class="st">&quot;resumo&quot;</span>,</span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>  <span class="at">match =</span> <span class="st">&quot;all&quot;</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 </div>
 </div>

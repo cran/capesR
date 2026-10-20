@@ -3,9 +3,9 @@
 
 ![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/capesR)&nbsp; 
 ![CRAN Downloads](https://cranlogs.r-pkg.org/badges/grand-total/capesR)&nbsp;
-![devel version](https://img.shields.io/badge/devel%20version-0.2.0-yellow)&nbsp; 
+![devel version](https://img.shields.io/badge/devel%20version-0.2.1-yellow)&nbsp; 
 ![License](https://img.shields.io/badge/license-GPL--3-blue)&nbsp; 
-[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue)](https://milkway.github.io/capesR/)
+[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue)](https://strategicprojects.github.io/capesR/)
 
 **capesR** is an R package designed to facilitate access to and manipulation of data from the Catalog of Theses and Dissertations maintained by the Brazilian Coordination for the Improvement of Higher Education Personnel (CAPES). This catalog contains information about theses and dissertations defended at higher education institutions (HEIs) in Brazil.
 
@@ -28,7 +28,7 @@ Or the development version from GitHub:
 install.packages("remotes")
 
 # Install capesR from GitHub
-remotes::install_github("milkway/capesR")
+remotes::install_github("StrategicProjects/capesR")
 ```
 
 ## Functions
@@ -121,15 +121,31 @@ text_filtered_data %>% glimpse()
 
 ### Search Text
 
-To search for text in already combined data, use the `search_capes_text` function, specifying the term and the text field (e.g., title, abstract, author, or advisor).
+To search for text in already combined data, use the `search_capes_text` function, specifying the term(s) and the text field(s) (e.g., `titulo`, `resumo`, `autoria`, `orientacao`). Matching is literal and case-insensitive.
 
 #### Example:
 
 ```r
+# Titles mentioning "Educação"
 results <- search_capes_text(
   data = combined_data,
   term = "Educação",
   field = "titulo"
+)
+
+# Titles or abstracts mentioning either synonym
+results <- search_capes_text(
+  data = combined_data,
+  term = c("varicela", "catapora"),
+  field = c("titulo", "resumo")
+)
+
+# Abstracts mentioning both terms
+results <- search_capes_text(
+  data = combined_data,
+  term = c("saúde", "escola"),
+  field = "resumo",
+  match = "all"
 )
 ```
 
@@ -178,3 +194,11 @@ capes_synthetic_df %>%
   summarise(total = sum(n)) %>%
   arrange(desc(total))
 ```
+
+## Disclaimer
+
+This package is an independent, open-source project and is **not**, in any way, affiliated with, endorsed by, or officially connected to the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES).
+
+All data retrieved through this package is sourced from [dadosabertos.capes.gov.br](https://dadosabertos.capes.gov.br) and remains the intellectual property of CAPES.
+
+The data is provided **as-is**, without warranty of any kind. The package authors are not responsible for the accuracy, completeness, or timeliness of the data. For official statistics and methodology, always refer to [www.gov.br/capes](https://www.gov.br/capes/pt-br).
