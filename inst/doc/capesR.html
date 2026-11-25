@@ -351,13 +351,23 @@ Higher Education Personnel (CAPES). This catalog includes information on
 theses and dissertations defended at higher education institutions in
 Brazil, with variables such as:</p>
 <ul>
-<li><strong>institution</strong>: Higher Education Institution.</li>
-<li><strong>area</strong>: Academic field of the work.</li>
-<li><strong>region</strong> and <strong>state</strong>: Location where
-the research was conducted.</li>
-<li><strong>abstract</strong>: Brief description of the topic and
-objectives.</li>
+<li><strong>institution</strong> (<code>ies</code>): Higher Education
+Institution.</li>
+<li><strong>area</strong> (<code>area</code>): Evaluation area of the
+graduate program.</li>
+<li><strong>knowledge areas</strong> (<code>grande_area</code>,
+<code>area_conhecimento</code>, <code>subarea</code>,
+<code>especialidade</code>, each with its CAPES code in
+<code>cd_*</code>, and <code>area_concentracao</code>): the CAPES
+classification of the work. Subarea, specialty and concentration area
+are only published for 2013 onwards.</li>
+<li><strong>region</strong> and <strong>state</strong>
+(<code>regiao</code>, <code>uf</code>): Location of the
+institution.</li>
+<li><strong>abstract</strong> (<code>resumo</code>): Brief description
+of the topic and objectives.</li>
 </ul>
+<p>The full list of columns is in <code>?read_capes_data</code>.</p>
 <p>This package automates the process of obtaining and organizing this
 data, making it easily accessible for analysis and reporting.</p>
 <p>The original CAPES data is available at <a href="https://dadosabertos.capes.gov.br/group/catalogo-de-teses-e-dissertacoes-brasil">dadosabertos.capes.gov.br</a>.</p>
